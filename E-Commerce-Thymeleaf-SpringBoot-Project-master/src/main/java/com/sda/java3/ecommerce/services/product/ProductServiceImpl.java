@@ -99,17 +99,21 @@ public class ProductServiceImpl implements ProductService {
         if (filter != null && filter.getCategoryId() != null && !filter.getCategoryId().isEmpty()) {
             try {
                 category = categoryRepository.getById(UUID.fromString(filter.getCategoryId()));
-            if (category != null)
-                filter.setCategoryName(category.getName());
+                if (category != null)
+                    filter.setCategoryName(category.getName());
             } catch (IllegalArgumentException e) {
                 // Invalid UUID format, ignore
             }
         }
 
-        return productRepository.getList(
-                category != null ? category.getId() : null,
-                StringUtils.isNotBlank(filter.getQuery()) ? filter.getQuery() : null
-        );
+        // Debug logging for query parameter
+        System.out.println("DEBUG: filter.getQuery() type = " + (filter != null && filter.getQuery() != null ? filter.getQuery().getClass().getSimpleName() : "null"));
+        System.out.println("DEBUG: filter.getQuery() value = " + (filter != null ? filter.getQuery() : "null"));
+
+        String queryParam = (filter != null && filter.getQuery() != null) ? filter.getQuery() : null;
+        String categoryIdParam = (category != null) ? category.getId().toString() : null;
+
+        return productRepository.getList(categoryIdParam, queryParam);
     }
 
     @Override

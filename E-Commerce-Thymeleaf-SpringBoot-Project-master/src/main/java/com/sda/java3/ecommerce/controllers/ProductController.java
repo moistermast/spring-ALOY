@@ -123,7 +123,7 @@ public class ProductController extends BaseController {
         var chainsProducts = productService.getProducts(chainsFilter);
         System.out.println("DEBUG: Found " + chainsProducts.size() + " chains products");
         modelMap.addAttribute("chains", chainsProducts);
-        
+        modelMap.addAttribute("filter", new ProductListFilter());
         return "catalogue";
     }
 }

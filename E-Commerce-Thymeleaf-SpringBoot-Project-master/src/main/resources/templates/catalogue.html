@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head th:replace="fragments/head :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
 <body class="config">
 <div id="app">
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{fragments/header :: header}"></div>
 
     <!-- Hero Section -->
     <div class="catalogue-hero">
@@ -15,7 +15,7 @@
 
     <div class="app-content">
         <!-- Bracelets Section -->
-        <section class="category-section" th:if="${bracelets != null && bracelets.size() > 0}">
+        <section class="category-section" th:if="${bracelets != null and !#lists.isEmpty(bracelets)}">
             <div class="container">
                 <div class="category-header">
                     <h2 class="category-title">Bracelets</h2>
@@ -24,7 +24,7 @@
                 <div class="products-grid">
                     <div class="product-card" th:each="product : ${bracelets}">
                         <div class="product-image">
-                            <img th:if="${product.image != null}" th:src="'\/images\/' + ${product.image}" th:alt="${product.name != null ? product.name : 'No Name'}">
+                            <img th:if="${product.image != null}" th:src="'/images/' + ${product.image}" th:alt="${product.name != null ? product.name : 'No Name'}">
                             <span th:if="${product.image == null}">No image</span>
                             <div class="product-overlay">
                                 <a th:href="'\/product-list-detail\/' + ${product.id}" class="btn-quick-view">Quick View</a>
@@ -45,7 +45,7 @@
         </section>
 
         <!-- Rings Section -->
-        <section class="category-section" th:if="${rings != null && rings.size() > 0}">
+        <section class="category-section" th:if="${rings != null and !#lists.isEmpty(rings)}">
             <div class="container">
                 <div class="category-header">
                     <h2 class="category-title">Rings</h2>
@@ -54,7 +54,7 @@
                 <div class="products-grid">
                     <div class="product-card" th:each="product : ${rings}">
                         <div class="product-image">
-                            <img th:if="${product.image != null}" th:src="'\/images\/' + ${product.image}" th:alt="${product.name != null ? product.name : 'No Name'}">
+                            <img th:if="${product.image != null}" th:src="'/images/' + ${product.image}" th:alt="${product.name != null ? product.name : 'No Name'}">
                             <span th:if="${product.image == null}">No image</span>
                             <div class="product-overlay">
                                 <a th:href="'\/product-list-detail\/' + ${product.id}" class="btn-quick-view">Quick View</a>
@@ -75,7 +75,7 @@
         </section>
 
         <!-- Chains Section -->
-        <section class="category-section" th:if="${chains != null && chains.size() > 0}">
+        <section class="category-section" th:if="${chains != null and !#lists.isEmpty(chains)}">
             <div class="container">
                 <div class="category-header">
                     <h2 class="category-title">Chains</h2>
@@ -84,7 +84,7 @@
                 <div class="products-grid">
                     <div class="product-card" th:each="product : ${chains}">
                         <div class="product-image">
-                            <img th:if="${product.image != null}" th:src="'\/images\/' + ${product.image}" th:alt="${product.name != null ? product.name : 'No Name'}">
+                            <img th:if="${product.image != null}" th:src="'/images/' + ${product.image}" th:alt="${product.name != null ? product.name : 'No Name'}">
                             <span th:if="${product.image == null}">No image</span>
                             <div class="product-overlay">
                                 <a th:href="'\/product-list-detail\/' + ${product.id}" class="btn-quick-view">Quick View</a>
@@ -105,7 +105,7 @@
         </section>
 
         <!-- No Products Message -->
-        <section class="category-section" th:if="${(bracelets == null || bracelets.size() == 0) && (rings == null || rings.size() == 0) && (chains == null || chains.size() == 0)}">
+        <section class="category-section" th:if="${(bracelets == null or #lists.isEmpty(bracelets)) and (rings == null or #lists.isEmpty(rings)) and (chains == null or #lists.isEmpty(chains))}">
             <div class="container">
                 <div class="category-header">
                     <h2 class="category-title">No Products Available</h2>
@@ -115,8 +115,8 @@
         </section>
     </div>
 
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </div>
-<div th:replace="fragments/scripts :: scripts"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
 </body>
 </html>

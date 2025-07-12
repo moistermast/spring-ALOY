@@ -1,12 +1,12 @@
-<head th:fragment="head">
+<head xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="_csrf" th:content="${_csrf.token}">
-    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <meta name="_csrf" th:if="${_csrf != null}" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:if="${_csrf != null}" th:content="${_csrf.headerName}">
     <link href="/images/logos etc/logopng.png" rel="shortcut icon" type="image/png">
     <title>ALOY | Stainless Steel & Bead Jewelry</title>
 

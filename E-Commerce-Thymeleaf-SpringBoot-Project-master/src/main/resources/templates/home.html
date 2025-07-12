@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head th:replace="fragments/head :: head"></head>
+<head th:replace="~{fragments/head :: head}"></head>
 
 <body class="config">
 
 <div id="app">
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{fragments/header :: header}"></div>
 
     <!--====== Primary Slider ======-->
     <div class="s-skeleton s-skeleton--h-640 s-skeleton--bg-grey">
@@ -70,7 +70,7 @@
 
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
-<div th:replace="fragments/scripts :: scripts"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
 </body>
 </html>
