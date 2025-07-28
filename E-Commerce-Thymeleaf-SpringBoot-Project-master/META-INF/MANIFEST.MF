@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.9.10
+Built-By: drhan
+Build-Jdk: 21.0.7
+Implementation-Title: e-commerce
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.sda.java3.ecommerce
+Implementation-URL: https://spring.io/projects/spring-boot/e-commerce
+Main-Class: org.springframework.boot.loader.launch.JarLauncher
+Start-Class: com.sda.java3.ecommerce.ECommerceApplication
+Spring-Boot-Version: 3.5.3
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Spring-Boot-Classpath-Index: BOOT-INF/classpath.idx
+Spring-Boot-Layers-Index: BOOT-INF/layers.idx
+

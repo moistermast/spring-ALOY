@@ -99,8 +99,8 @@ public class ProductServiceImpl implements ProductService {
         if (filter != null && filter.getCategoryId() != null && !filter.getCategoryId().isEmpty()) {
             try {
                 category = categoryRepository.getById(UUID.fromString(filter.getCategoryId()));
-                if (category != null)
-                    filter.setCategoryName(category.getName());
+            if (category != null)
+                filter.setCategoryName(category.getName());
             } catch (IllegalArgumentException e) {
                 // Invalid UUID format, ignore
             }
