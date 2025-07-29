@@ -1,16 +1,11 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /build
 
-# Copy specific files/directories explicitly
-COPY pom.xml /build/
-COPY src/ /build/src/
-COPY mvnw /build/
-COPY .mvn/ /build/.mvn/
+# Copy only the essential files needed for Maven build
+COPY pom.xml ./
+COPY src ./src
 
-# Verify they're there
-RUN ls -la /build
-RUN ls -la /build/src
-
+# Build using system Maven (more reliable)
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21
