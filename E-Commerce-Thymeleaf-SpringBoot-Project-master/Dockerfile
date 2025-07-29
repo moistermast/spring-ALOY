@@ -1,14 +1,16 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
-
-# Copy everything to /build instead of /app
-COPY . /build
 WORKDIR /build
 
-# Debug
+# Copy specific files/directories explicitly
+COPY pom.xml /build/
+COPY src/ /build/src/
+COPY mvnw /build/
+COPY .mvn/ /build/.mvn/
+
+# Verify they're there
 RUN ls -la /build
 RUN ls -la /build/src
 
-# Build
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21
