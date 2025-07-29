@@ -1,14 +1,14 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copy Maven files first
-COPY pom.xml ./
-COPY mvnw ./
-COPY mvnw.cmd ./
-COPY .mvn ./.mvn
+# Copy everything
+COPY . .
 
-# Copy source code
-COPY src ./src
+# Debug: List contents (these will work in the Linux container)
+RUN ls -la
+RUN ls -la src/ || echo "src directory not found"
+RUN pwd
+RUN find . -name "pom.xml" || echo "pom.xml not found"
 
 RUN mvn clean package -DskipTests
 
