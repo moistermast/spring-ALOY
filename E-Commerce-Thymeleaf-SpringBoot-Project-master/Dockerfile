@@ -1,14 +1,14 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
-COPY . .
 
-# Add these debug lines
-RUN echo "=== Listing /app directory ==="
-RUN ls -la /app
-RUN echo "=== Checking for pom.xml ==="
-RUN ls -la pom.xml || echo "pom.xml not found!"
-RUN echo "=== Current working directory ==="
-RUN pwd
+# Copy Maven files first
+COPY pom.xml ./
+COPY mvnw ./
+COPY mvnw.cmd ./
+COPY .mvn ./.mvn
+
+# Copy source code
+COPY src ./src
 
 RUN mvn clean package -DskipTests
 
